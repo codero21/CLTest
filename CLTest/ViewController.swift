@@ -9,6 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // MARK: Outlets
+    
+    @IBOutlet weak var latitudeValue: UILabel!
+    @IBOutlet weak var LongitudeValue: UILabel!
+    @IBOutlet weak var distanceValue: UILabel!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
