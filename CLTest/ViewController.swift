@@ -15,6 +15,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var latitudeValue: UILabel!
     @IBOutlet weak var LongitudeValue: UILabel!
     @IBOutlet weak var distanceValue: UILabel!
+    @IBOutlet weak var toggleButton: UIButton!
+    
+    
+    // MARK: Action Methods
+    
+    @IBAction func onButtonPressed(_ sender: Any) {
+    }
     
     
 

@@ -77,6 +77,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAy-mi-6bt">
+                                <rect key="frame" x="20" y="163" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.68841575460000004" green="1" blue="0.63596117259999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Had-of-erY"/>
+                                </constraints>
+                                <state key="normal" title="Start Location Updates"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Sh-lJ-rEy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -87,9 +98,12 @@
                             <constraint firstItem="KQF-Na-fiY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="39" id="RLC-a7-wUa"/>
                             <constraint firstItem="HRc-0n-SXL" firstAttribute="top" secondItem="IHz-xj-8Fi" secondAttribute="bottom" constant="26" id="ViZ-Kq-dIg"/>
                             <constraint firstItem="IHz-xj-8Fi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="39" id="VuP-3H-8Kj"/>
+                            <constraint firstItem="BAy-mi-6bt" firstAttribute="top" secondItem="bia-Un-7mb" secondAttribute="bottom" constant="20" id="XmW-7K-bfm"/>
                             <constraint firstItem="bDk-2q-R1d" firstAttribute="leading" secondItem="IHz-xj-8Fi" secondAttribute="trailing" constant="99" id="cW4-su-x5l"/>
                             <constraint firstItem="HRc-0n-SXL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="39" id="fEL-Mr-Apb"/>
+                            <constraint firstAttribute="trailing" secondItem="BAy-mi-6bt" secondAttribute="trailing" constant="20" id="h7t-Tg-QYL"/>
                             <constraint firstItem="LOF-QI-cih" firstAttribute="top" secondItem="bDk-2q-R1d" secondAttribute="bottom" constant="26" id="nDD-oW-JV6"/>
+                            <constraint firstItem="BAy-mi-6bt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="pkB-eG-ggf"/>
                             <constraint firstItem="bia-Un-7mb" firstAttribute="leading" secondItem="KQF-Na-fiY" secondAttribute="trailing" constant="21" id="rMU-vS-YsJ"/>
                             <constraint firstItem="LOF-QI-cih" firstAttribute="leading" secondItem="HRc-0n-SXL" secondAttribute="trailing" constant="85" id="x8L-z0-Cen"/>
                         </constraints>
@@ -98,6 +112,7 @@
                         <outlet property="LongitudeValue" destination="LOF-QI-cih" id="JAL-fd-jnt"/>
                         <outlet property="distanceValue" destination="bia-Un-7mb" id="g3r-EK-Pi1"/>
                         <outlet property="latitudeValue" destination="bDk-2q-R1d" id="aqw-nx-4Sm"/>
+                        <outlet property="toggleButton" destination="BAy-mi-6bt" id="WA6-Mf-Hy3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
