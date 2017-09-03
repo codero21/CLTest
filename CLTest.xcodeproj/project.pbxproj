@@ -12,7 +12,7 @@
 		E3C7D7371F59FBCB00CA5054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C7D7351F59FBCB00CA5054 /* Main.storyboard */; };
 		E3C7D7391F59FBCB00CA5054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3C7D7381F59FBCB00CA5054 /* Assets.xcassets */; };
 		E3C7D73C1F59FBCB00CA5054 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C7D73A1F59FBCB00CA5054 /* LaunchScreen.storyboard */; };
-		E3C7D7451F59FCDB00CA5054 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C7D7441F59FCDB00CA5054 /* CoreLocation.framework */; };
+		E3C7D7461F5B69CE00CA5054 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C7D7441F59FCDB00CA5054 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3C7D7451F59FCDB00CA5054 /* CoreLocation.framework in Frameworks */,
+				E3C7D7461F5B69CE00CA5054 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

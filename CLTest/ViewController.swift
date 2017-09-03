@@ -9,46 +9,38 @@
 import UIKit
 import CoreLocation
 
+
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
-    // MARK: Properties
-    
-    var locationManager: CLLocationManager? = nil
-    var lastLocation: CLLocation? = nil
-    var isReceivingLocationUpdates: Bool = false
-    
-    
-    // MARK: Outlets
-    
     @IBOutlet weak var latitudeValue: UILabel!
-    @IBOutlet weak var LongitudeValue: UILabel!
+    @IBOutlet weak var longitudeValue: UILabel!
     @IBOutlet weak var distanceValue: UILabel!
     @IBOutlet weak var toggleButton: UIButton!
     
+    var locationManager:CLLocationManager? = nil
+    var lastLocation:CLLocation? = nil
+    var isReceivingLocationUpdates:Bool = false
     
-    // MARK: Action Methods
-    
-    @IBAction func onButtonPressed(_ sender: Any) {
+    override func viewDidLoad() {
         
-        if isReceivingLocationUpdates == false {
-            
-            if  CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedWhenInUse {
-                locationManager!.requestWhenInUseAuthorization()
-            } else  {
-                isReceivingLocationUpdates = true
-                toggleButton.titleLabel!.text = "Stop Location Updates"
-                locationManager!.startUpdatingLocation()
-            }
-        } else {
-            isReceivingLocationUpdates = false
-            toggleButton.titleLabel!.text = "Start Location Updates"
-            locationManager?.stopUpdatingLocation()
-        }
+        super.viewDidLoad()
+        
+        locationManager = CLLocationManager()
+        locationManager!.delegate = self
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        
+        lastLocation = CLLocation(latitude: 51.5001524, longitude: -0.1262362)
+        
+        toggleButton.titleLabel!.text = "Start location updates"
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
+    {
         var shouldAllow = false
         
         switch status {
@@ -62,57 +54,61 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if shouldAllow == true {
             isReceivingLocationUpdates = true
-            toggleButton.titleLabel!.text = "Stop Location Updates"
+            toggleButton.titleLabel!.text = "Stop location updates"
             manager.startUpdatingLocation()
         }
-        
     }
     
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
         let locationArray = locations as NSArray
-        
-        for newLocation in locationArray {
-            
-            // lat/lon  values should only be considered if 
-            // horizontal accuracy is not negative.
-            if (newLocation as AnyObject).horizontalAccuracy >= 0 {
-                let currentLatitude: CLLocationDegrees = (newLocation as AnyObject).coordinate.latitude
-                let currentLongitude: CLLocationDegrees = (newLocation as AnyObject).coordinate.longitude
-                
+        for newLocation in locationArray
+        {
+            // lat/lon values should only be considered if
+            // horizontalAccuracy is not negative.
+            if (newLocation as AnyObject).horizontalAccuracy >= 0
+            {
+                let currentLatitude:CLLocationDegrees = (newLocation as AnyObject).coordinate.latitude;
+                let currentLongitude:CLLocationDegrees = (newLocation as AnyObject).coordinate.longitude;
                 let distanceTravelled = (newLocation as AnyObject).distance(from: lastLocation!)
                 
-                
-                
                 latitudeValue.text = "\(currentLatitude)"
-                LongitudeValue.text = "\(currentLongitude)"
+                longitudeValue.text = "\(currentLongitude)"
                 distanceValue.text = "\(distanceTravelled)"
                 
                 lastLocation = newLocation as? CLLocation
-                
             }
         }
         
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    
+    @IBAction func onButtonPressed(_ sender: AnyObject) {
         
-        locationManager = CLLocationManager()
-        locationManager!.delegate = self
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        if isReceivingLocationUpdates == false
+        {
+            if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedWhenInUse
+            {
+                locationManager!.requestWhenInUseAuthorization()
+            }
+            else
+            {
+                isReceivingLocationUpdates = true
+                toggleButton.titleLabel!.text = "Stop location updates"
+                
+                locationManager!.startUpdatingLocation()
+            }
+        }
+        else
+        {
+            isReceivingLocationUpdates = false
+            
+            toggleButton.titleLabel!.text = "Start location updates"
+            
+            locationManager!.stopUpdatingLocation()
+        }
         
-        lastLocation = CLLocation(latitude: 51.5001524, longitude: -0.1262362)
-        
-        toggleButton.titleLabel!.text = "Stop Location Updates"
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
-
